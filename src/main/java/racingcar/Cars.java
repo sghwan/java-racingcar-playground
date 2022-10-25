@@ -12,6 +12,14 @@ public class Cars {
         cars = mapToRacingCar(carNames);
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
     private List<Car> mapToRacingCar(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
 
@@ -22,14 +30,11 @@ public class Cars {
         return cars;
     }
 
-    public void race(int repetition) {
-        for (int i = 0; i < repetition; i++) {
-            calculateDistance();
-            updateGoalLine();
-        }
+    public List<Car> race() {
+        calculateDistance();
+        updateGoalLine();
 
-        Judge judge = new Judge();
-        judge.judgeWinners(cars, max);
+        return cars;
     }
 
     private void calculateDistance() {

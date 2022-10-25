@@ -1,6 +1,5 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 public class JudgeTest {
     List<Car> cars;
@@ -36,11 +37,11 @@ public class JudgeTest {
         List<String> winners = judge.judgeWinners(cars, 3);
 
         //then
-        Assertions.assertThat(winners.size()).isEqualTo(1);
+        assertThat(winners.size()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("승리자는 두명일 수 있다.")
+    @DisplayName("승리자는 여러명일 수 있다.")
     void judge_joint_win() {
         //given
         Car car1 = new Car(new Driver("car1"), 1);
@@ -55,7 +56,7 @@ public class JudgeTest {
         List<String> winners = judge.judgeWinners(cars, 2);
 
         //then
-        Assertions.assertThat(winners.size()).isEqualTo(2);
+        assertThat(winners.size()).isEqualTo(2);
     }
 
     @AfterEach
