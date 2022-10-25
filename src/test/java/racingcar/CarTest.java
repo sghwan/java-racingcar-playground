@@ -1,27 +1,36 @@
 package racingcar;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
+    Car car;
 
-    @ParameterizedTest
-    @CsvSource(value = {"aaa,true", "aa,true", "abcde,true"})
-    @DisplayName("자동차의 이름은 5자를 넘을 수 없다.")
-    void validateCarName(String name, boolean expected) {
-        Car car = new Car(name);
-        assertThat(car.getName().length() <= 5).isEqualTo(expected);
+    @BeforeEach
+    void setUp() {
+        car = new Car(new Driver("seoul"));
     }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"666666", "7777777"})
-    @DisplayName("자동차의 이름은 5자를 넘으면 예외를 던진다.")
-    void handleException(String name) {
-        assertThatThrownBy(() -> new Car(name)).isInstanceOf(IllegalArgumentException.class);
+    @Test
+    @DisplayName("랜덤값이 4이상이면 앞으로 전진할 수 있는 상태이다")
+    void moveForward() {
+        car.move(5);
+        assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("랜덤값이 3이하이면 전진하지 못한다.")
+    void stay() {
+        car.move(3);
+        assertThat(car.getPosition()).isEqualTo(0);
+    }
+
+    @AfterEach
+    void tearDown() {
+        car = null;
     }
 }

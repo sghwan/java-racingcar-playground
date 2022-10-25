@@ -2,19 +2,33 @@ package racingcar;
 
 public class Car {
 
-    private final String name;
+    private final Driver driver;
+    private int position;
 
-    public Car(String name) {
-        if (!isCorrectLength(name))
-            throw new IllegalArgumentException();
-        this.name = name;
+    public Car(Driver driver, int position) {
+        this.driver = driver;
+        this.position = position;
     }
 
-    private boolean isCorrectLength(String name) {
-        return name.length() >= 1 && name.length() <= 5;
+    public Car(Driver driver) {
+        this.driver = driver;
+        this.position = 0;
     }
 
-    public String getName() {
-        return name;
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(int randomNumber) {
+        if (isMove(randomNumber))
+            position += 1;
+    }
+
+    private boolean isMove(int randomNumber) {
+        return randomNumber > 3;
     }
 }
