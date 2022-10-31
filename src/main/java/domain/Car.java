@@ -20,4 +20,12 @@ public class Car {
     private boolean isMovable(int random) {
         return random >= MOVE_VALUE;
     }
+
+    public Name getName() {
+        return name;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
 }

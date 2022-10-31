@@ -9,6 +9,11 @@ public class Name {
         if (name.length() > VALID_MAX_LENGTH || name.length() < VALID_MIN_LENGTH) {
             throw new IllegalArgumentException("자동차의 이름은 1~5자 여야 합니다.");
         }
+
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 }
