@@ -3,6 +3,7 @@ package domain;
 public class Car {
     private final Name name;
     private final Position position;
+    private static final int MOVE_VALUE = 4;
 
     public Car(String name) {
         this.name = new Name(name);
@@ -17,6 +18,6 @@ public class Car {
     }
 
     private boolean isMovable(int random) {
-        return random >= 4;
+        return random >= MOVE_VALUE;
     }
 }
