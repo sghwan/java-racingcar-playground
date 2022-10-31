@@ -12,9 +12,9 @@ public class Car {
 
     public int move(int random) {
         if (isMovable(random))
-            return 1;
+            return position.moveForward();
 
-        return 0;
+        return position.getPosition();
     }
 
     private boolean isMovable(int random) {

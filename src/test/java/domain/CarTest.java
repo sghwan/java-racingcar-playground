@@ -1,18 +1,31 @@
 package domain;
 
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.*;
+
 public class CarTest {
+    Car car;
+
+    @BeforeEach
+    void setUp() {
+        car = new Car("car1");
+    }
+
     @Test
     void move() {
-        Car car = new Car("car1");
-        Assertions.assertThat(car.move(4)).isEqualTo(1);
+        assertThat(car.move(4)).isEqualTo(1);
     }
 
     @Test
     void stay() {
-        Car car = new Car("car1");
-        Assertions.assertThat(car.move(3)).isEqualTo(0);
+        assertThat(car.move(3)).isEqualTo(0);
+    }
+
+    @AfterEach
+    void tearDown() {
+        car = null;
     }
 }
